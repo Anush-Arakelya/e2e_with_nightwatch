@@ -1,6 +1,6 @@
 module.exports = {
     '@tags' : ['google'],
-    'My first test case'(browser) {
+    'Test suit for Google advanced search'(browser) {
         const mainQuary = 'Anush Ar'
         const mainQuaryInputSelector = 'input[name = "as_q"]'
         const languageDropdownOpenSelector = '#lr_button'
