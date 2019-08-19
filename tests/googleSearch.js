@@ -1,6 +1,6 @@
 module.exports = {
     '@tags' : ['google'],
-    'Test suit for Google advanced search'(browser) {
+    'Google advanced search'(browser) {
         const mainQuary = 'Anush Ar'
         const mainQuaryInputSelector = 'input[name = "as_q"]'
         const languageDropdownOpenSelector = '#lr_button'
@@ -18,7 +18,7 @@ module.exports = {
             .click(lastUpdateDropdownSelector) 
             .click(lastUpdateDropdownSelectedValue) 
             .click(submitButtonSelector) 
-            .assert.urlContains('as_q=Anush+Ar', 'qury is Anush Ar')
+            .assert.urlContains('as_q=Anush+Ar', 'quary is Anush Ar')
             .assert.urlContains('lang_hy', 'langauage is armenian')
             .assert.urlContains('as_qdr=d', 'time period is last day')
             .saveScreenshot('tests_output/google.png')
