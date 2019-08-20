@@ -6,9 +6,9 @@ module.exports = {
         const rightBlockOfHeader = '.left-blk-head ~ .right-blk-head'
         const headerLeftBlockElements = '.left-blk-head-elm'
         const headerLeftBlockFirstElementImage = '.left-blk-head-elm:nth-child(1) > img'
-        const headerLeftBlockFirstblobkMoneyCurrency = '.left-blk-head-elm:nth-child(1) > img ~ .wr-bnm span'
-        const headerLeftBlockFirstblobkMoney = '.left-blk-head-elm:nth-child(1) > img ~ .wr-bnm p'
-        const headerLeftBlockFirstblobkBottomText = '.left-blk-head-elm:nth-child(1) > img ~ .wr-bnm .desc-head-m'
+        const headerLeftBlockFirstblobkMoneyCurrency = '.left-blk-head-elm:nth-child(1) > img ~ *'
+        const headerLeftBlockFirstblobkMoney = '.left-blk-head-elm:nth-child(1) > img ~ *'
+        const headerLeftBlockFirstblobkBottomText = '.left-blk-head-elm:nth-child(1) > img ~ *'
 
         browser
         .resizeWindow(1280, 1024)
@@ -28,9 +28,9 @@ module.exports = {
     'Header left second block'(browser) {
         const header = '#header-index'
         const headerLeftBlockSecondElementImage = '.left-blk-head-elm:nth-child(2) > img'
-        const headerLeftBlockSecondblobkMoneyCurrency = '.left-blk-head-elm:nth-child(2) > img ~ .wr-bnm span'
-        const headerLeftBlockSecondblobkMoney = '.left-blk-head-elm:nth-child(2) > img ~ .wr-bnm p'
-        const headerLeftBlockSecondblobkBottomText = '.left-blk-head-elm:nth-child(2) > img ~ .wr-bnm .desc-head-m'
+        const headerLeftBlockSecondblobkMoneyCurrency = '.left-blk-head-elm:nth-child(2) > img ~ *'
+        const headerLeftBlockSecondblobkMoney = '.left-blk-head-elm:nth-child(2) > img ~ *'
+        const headerLeftBlockSecondblobkBottomText = '.left-blk-head-elm:nth-child(2) > img ~ *'
 
         browser
         .resizeWindow(1280, 1024)
@@ -40,10 +40,25 @@ module.exports = {
         .assert.containsText(headerLeftBlockSecondblobkMoneyCurrency, "₽", 'header second blobks currency is correct')
         .assert.containsText(headerLeftBlockSecondblobkBottomText, "Cумма займов за сегодня", 'header second block bottom text is correct')
         browser.expect.element(headerLeftBlockSecondblobkMoney).text.to.not.equal('')
-
         browser.end()
         
-    }
+    },
+    'Header left third block'(browser) {
+        const header = '#header-index'
+        const headerLeftBlockThirdElementImage = '.left-blk-head-elm:nth-child(3) > img'
+        const headerLeftBlockThirdblobkMoney = '.left-blk-head-elm:nth-child(3) > img ~ *'
+        const headerLeftBlockThirdblobkBottomText = '.left-blk-head-elm:nth-child(3) > img ~ *'
+
+        browser
+        .resizeWindow(1280, 1024)
+        .url('https://oneclickmoney.ru/')
+        .waitForElementVisible(header)
+        .assert.visible(headerLeftBlockThirdElementImage, 'header third blobk image is present')
+        .assert.containsText(headerLeftBlockThirdblobkBottomText, "Число займов за сегодня", 'header third block bottom text is correct')
+        browser.expect.element(headerLeftBlockThirdblobkMoney).text.to.not.equal('')
+        browser.end()
+        
+    },
     
 
 };
