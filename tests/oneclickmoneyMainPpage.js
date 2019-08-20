@@ -17,16 +17,16 @@ module.exports = {
         .assert.visible(header, 'Page header is present')
         .assert.visible(leftBlockOfHeader, 'Page header contains left block')
         .assert.visible(headerLeftBlockFirstElementImage, 'header first block image is present')
-        .assert.containsText(headerLeftBlockFirstblobkMoney, "11500", 'header first block top text is correct')
         .assert.containsText(headerLeftBlockFirstblobkMoneyCurrency, "₽", 'header first block currency is correct')
         .assert.containsText(headerLeftBlockFirstblobkBottomText, "Средний займ за сегодня", 'header first block bottom text is correct')
         .assert.visible(rightBlockOfHeader, 'Page header contains right block')
         .expect.elements(headerLeftBlockElements).count.to.equal(3)
+        browser.expect.element(headerLeftBlockFirstblobkMoney).text.to.not.equal('')
+
         browser.end()
     },
     'Header left second block'(browser) {
         const header = '#header-index'
-
         const headerLeftBlockSecondElementImage = '.left-blk-head-elm:nth-child(2) > img'
         const headerLeftBlockSecondblobkMoneyCurrency = '.left-blk-head-elm:nth-child(2) > img ~ .wr-bnm span'
         const headerLeftBlockSecondblobkMoney = '.left-blk-head-elm:nth-child(2) > img ~ .wr-bnm p'
@@ -37,9 +37,11 @@ module.exports = {
         .url('https://oneclickmoney.ru/')
         .waitForElementVisible(header)
         .assert.visible(headerLeftBlockSecondElementImage, 'header second blobk image is present')
-        .assert.containsText(headerLeftBlockSecondblobkMoney, "10500", 'header second blobks top text is correct')
         .assert.containsText(headerLeftBlockSecondblobkMoneyCurrency, "₽", 'header second blobks currency is correct')
         .assert.containsText(headerLeftBlockSecondblobkBottomText, "Cумма займов за сегодня", 'header second block bottom text is correct')
+        browser.expect.element(headerLeftBlockSecondblobkMoney).text.to.not.equal('')
+
+        browser.end()
         
     }
     
