@@ -20,9 +20,8 @@ module.exports = {
         .assert.containsText(headerLeftBlockFirstblobkMoneyCurrency, "₽", 'header first block currency is correct')
         .assert.containsText(headerLeftBlockFirstblobkBottomText, "Средний займ за сегодня", 'header first block bottom text is correct')
         .assert.visible(rightBlockOfHeader, 'Page header contains right block')
-        .expect.elements(headerLeftBlockElements).count.to.equal(3)
+        browser.expect.elements(headerLeftBlockElements).count.to.equal(3)
         browser.expect.element(headerLeftBlockFirstblobkMoney).text.to.not.equal('')
-        .saveScreenshot('tests_output/click.png')
         browser.end()
     },
     'Header left second block'(browser) {
@@ -40,7 +39,6 @@ module.exports = {
         .assert.containsText(headerLeftBlockSecondblobkMoneyCurrency, "₽", 'header second blobks currency is correct')
         .assert.containsText(headerLeftBlockSecondblobkBottomText, "Cумма займов за сегодня", 'header second block bottom text is correct')
         browser.expect.element(headerLeftBlockSecondblobkMoney).text.to.not.equal('')
-        .saveScreenshot('tests_output/click.png')
         browser.end()
         
     },
@@ -57,7 +55,6 @@ module.exports = {
         .assert.visible(headerLeftBlockThirdElementImage, 'header third blobk image is present')
         .assert.containsText(headerLeftBlockThirdblobkBottomText, "Число займов за сегодня", 'header third block bottom text is correct')
         browser.expect.element(headerLeftBlockThirdblobkMoney).text.to.not.equal('')
-        .saveScreenshot('tests_output/click.png')
         browser.end()
         
     },
@@ -80,6 +77,27 @@ module.exports = {
             .which.contains('signin')
         browser.expect.element(RegistarationLink).to.have.attribute('href')
             .which.contains('simple-registration/')
+        browser.end()
+        
+    },
+    'Header phone block'(browser) {
+        const header = '#header-index'
+        const phoneBlocPphoneNumber = '.number-right-head > a'
+        const phoneBlockText = '.right-number-link-head > p'
+        const phoneBlockLink = '.right-number-link-head button'
+
+        browser
+        .resizeWindow(1800, 1024)
+        .url('https://oneclickmoney.ru/')
+        .waitForElementVisible(header)
+        .assert.visible(phoneBlocPphoneNumber, 'Phone number is present')
+        .assert.containsText(phoneBlocPphoneNumber, "8 800 700 06 07", 'Phone number is correct')
+        .assert.visible(phoneBlockText, 'Phone block text is present')
+        .assert.containsText(phoneBlockText, "Круглосуточно", 'Phone block text is correct')
+        .assert.visible(phoneBlockLink, 'Phone block link is present')
+        .assert.containsText(phoneBlockLink, "Перезвоните мне", 'Phone block link text is correct')
+        browser.expect.element(phoneBlocPphoneNumber).to.have.attribute('href')
+            .which.contains('tel:88007000607')       
         browser.end()
         
     }
