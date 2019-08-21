@@ -100,6 +100,31 @@ module.exports = {
             .which.contains('tel:88007000607')       
         browser.end()
         
+    },
+    'Policy Agreement Notification bar'(browser) {
+        const header = '#header-index'
+        const NotificationBar = '#cookie-notification-bar'
+        const NotificationBarCancelButton = '#cookie-notification-bar span ~ a.close'
+        const NotificationBarText = '#cookie-notification-bar span'
+        const policyCookeFilesLink = '#cookie-notification-bar span > a'
+       
+
+        browser
+        .resizeWindow(1800, 1024)
+        .url('https://oneclickmoney.ru/')
+        .waitForElementVisible(header)
+        .assert.visible(NotificationBar, 'Policy Agreement Notification is present')
+        .assert.visible(NotificationBarCancelButton, 'Policy Agreement Notification bar cancel button is present')
+        .assert.visible(policyCookeFilesLink, 'Policy cooke files link is present')
+        .assert.visible(NotificationBarText, 'Policy Agreement Notification text is visible')
+        .assert.containsText(NotificationBarText, "Продолжая пользоваться сайтом oneclickmoney.ru, Вы соглашаетесь с нашей", 
+            'Policy Agreement Notification text is correct')
+        .assert.containsText(policyCookeFilesLink, "Политикой cookie-файлов", 'Policy cooke files link text is correct')
+        browser.expect.element(policyCookeFilesLink).to.have.attribute('href').which.contains('#')
+        browser.click(NotificationBarCancelButton)
+        .assert.elementNotPresent(NotificationBar, 'After clicking Cancel button the bar is present disappear')       
+        browser.end()
+        
     }
 
 };
