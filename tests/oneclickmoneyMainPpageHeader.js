@@ -73,8 +73,7 @@ module.exports = {
         .assert.containsText(RegistarationLink, "Регистрация", 'Registaration link text is correct')
         .assert.visible(LogInLink, 'Login link is present')
         .assert.containsText(LogInLink, "Вход", 'Login link text is correct')
-        browser.expect.element(LogInLink).to.have.attribute('href')
-            .which.contains('signin')
+        browser.expect.element(LogInLink).to.have.attribute('href').which.contains('signin')
         browser.expect.element(RegistarationLink).to.have.attribute('href')
             .which.contains('simple-registration/')
         browser.end()
@@ -122,7 +121,7 @@ module.exports = {
         .assert.containsText(policyCookeFilesLink, "Политикой cookie-файлов", 'Policy cooke files link text is correct')
         browser.expect.element(policyCookeFilesLink).to.have.attribute('href').which.contains('#')
         browser.click(NotificationBarCancelButton)
-        .assert.elementNotPresent(NotificationBar, 'After clicking Cancel button the bar is present disappear')       
+        .assert.elementNotPresent(NotificationBar, 'After clicking Cancel button the bar disappear')       
         browser.end()
         
     }
